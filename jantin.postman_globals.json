@@ -1,0 +1,19 @@
+{
+	"id": "ed8065e7-5ab1-4547-81b7-15de48d01f67",
+	"values": [
+		{
+			"key": "token",
+			"value": "",
+			"enabled": true
+		},
+		{
+			"key": "id",
+			"value": "",
+			"enabled": true
+		}
+	],
+	"name": "jantin Globals",
+	"_postman_variable_scope": "globals",
+	"_postman_exported_at": "2021-04-03T23:16:05.941Z",
+	"_postman_exported_using": "Postman/8.0.10"
+}

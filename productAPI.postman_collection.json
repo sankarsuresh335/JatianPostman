@@ -1,0 +1,181 @@
+{
+	"info": {
+		"_postman_id": "be6861c8-7592-4ef8-a0dc-0baab102f523",
+		"name": "productAPI",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Login request",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var jsonresponse=pm.response.json();\r",
+							"console.log(jsonresponse);\r",
+							"var mob=jsonresponse.data.user.mobile_number;\r",
+							"console.log(mob);\r",
+							"var token=jsonresponse.data.token;\r",
+							"console.log(token);\r",
+							"pm.globals.set(\"token\",token);\r",
+							"var name=jsonresponse.data.user.name;\r",
+							"console.log(name);\r",
+							"pm.variables.set(\"email\",\"jatinvsharma@gmail.com\");\r",
+							"pm.variables.set(\"password\",\"123123123\");"
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							"pm.variables.set(\"email\",\"jatinvsharma@gmail.com\");\r",
+							"pm.variables.set(\"password\",\"123123123\");\r",
+							"\r",
+							"var Email=pm.iterationData.get(\"emailAddress\");\r",
+							"\r",
+							"pm.variables.set(\"emailorg\",Email);\r",
+							"\r",
+							"var Password=pm.iterationData.get(\"passWord\");\r",
+							"\r",
+							"pm.variables.set(\"Passwordorg\",Password);"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n\"email\": \"{{email}}\",\r\n\"password\": \"{{password}}\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{BASEURL}}/user/signin",
+					"host": [
+						"{{BASEURL}}"
+					],
+					"path": [
+						"user",
+						"signin"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "addproduct",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var response=pm.response.json();\r",
+							"\r",
+							"var id=response.data.id;\r",
+							"console.log (id);\r",
+							"\r",
+							"pm.globals.set(\"id\",id);"
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							"var prodName=pm.iterationData.get(\"productName\")\r",
+							"\r",
+							"pm.variables.set(\"ProdctName\",prodName)\r",
+							"\r",
+							"var prodDesc=pm.iterationData.get(\"productDesc\")\r",
+							"\r",
+							"pm.variables.set(\"ProductDesc\",prodDesc)\r",
+							"\r",
+							"var prodPrice=pm.iterationData.get(\"productPrice\")\r",
+							"\r",
+							"pm.variables.set(\"ProductPrice\",prodPrice)"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "{{token}}",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n\r\n\"prod_name\": \"samsung\",\r\n\r\n\"prod_desc\": \"note ultra s20\",\r\n\r\n\"prod_price\": 75000\r\n\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{BASEURL}}/api/v1/products",
+					"host": [
+						"{{BASEURL}}"
+					],
+					"path": [
+						"api",
+						"v1",
+						"products"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "SearchProduct",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "{{token}}",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{BASEURL}}/api/v1/products/{{id}}",
+					"host": [
+						"{{BASEURL}}"
+					],
+					"path": [
+						"api",
+						"v1",
+						"products",
+						"{{id}}"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

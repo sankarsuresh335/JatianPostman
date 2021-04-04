@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuites name="productAPI" tests="3" time="1.425">
+  <testsuite name="Login request" id="396a4a5e-a0dd-46e2-9d90-b2a46d13bcdd" timestamp="2021-04-04T00:21:29.405Z" tests="0" failures="0" errors="0" time="0.772"/>
+  <testsuite name="addproduct" id="c535d79f-3b82-4b50-a486-5f30557a5aa8" timestamp="2021-04-04T00:21:29.405Z" tests="0" failures="0" errors="0" time="0.330"/>
+  <testsuite name="SearchProduct" id="7df1881e-9466-49ef-8a7c-493bb73c4390" timestamp="2021-04-04T00:21:29.405Z" tests="0" failures="0" errors="0" time="0.323"/>
+</testsuites>
